@@ -118,7 +118,7 @@ USE_I18N = True
 USE_TZ = True
 
 AUTH_USER_MODEL = 'user.CustomUser'
-AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']
+AUTHENTICATION_BACKENDS = ['user.backends.EmailBackend']
 DJOSER = {
     'LOGIN_FIELD': 'email',  # Use email as the login field
     'USER_CREATE_PASSWORD_RETYPE': True,  # Require entering the password twice during registration
