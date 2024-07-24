@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt',
+  
     'user',
     'recipe',
     'comment',
@@ -115,8 +117,28 @@ USE_I18N = True
 
 USE_TZ = True
 
-AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'user.CustomUser'
 AUTHENTICATION_BACKENDS = ['users.backends.EmailBackend']
+DJOSER = {
+    'LOGIN_FIELD': 'email',  # Use email as the login field
+    'USER_CREATE_PASSWORD_RETYPE': True,  # Require entering the password twice during registration
+}
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('JWT',),
+}
+
+
+# Authentication configuration
+REST_FRAMEWORK = {
+   
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+       
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+   
+}
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
